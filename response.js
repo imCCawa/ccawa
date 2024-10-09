@@ -1,22 +1,19 @@
-// response.js
-let body = $response.body;
+// 解析响应体
+let body = JSON.parse($response.body);
 
-// 解析当前响应体为 JSON
-let responseJson = JSON.parse(body);
-
-// 清除现有的题目，保留统一的答案
-responseJson.questionCnt = 1; // 设置题目数量为 1
-responseJson.correctCnt = 1; // 设置正确数量为 1
-responseJson.questions = [{ // 设置统一的问题
-    "id": 1,
-    "content": "1\\circle2", // 题目内容
-    "answer": "<", // 正确答案
-    "userAnswer": "1 < 2", // 用户答案
-    "answers": ["<"] // 可选答案
+// 修改 questions 数组为一个固定问题
+body.examVO.questions = [{
+  "id": 0,
+  "examId": body.examVO.pkIdStr,
+  "content": "1\\circle2",
+  "answer": "<",
+  "userAnswer": null,
+  "answers": ["<"],
+  "status": 0,
+  "script": null,
+  "wrongScript": null,
+  "ruleType": "COMPARE"
 }];
 
-// 转换回字符串格式
-body = JSON.stringify(responseJson);
-
-// 返回修改后的响应体
-$done(body);
+// 将修改后的响应体返回
+$done({ body: JSON.stringify(body) });
