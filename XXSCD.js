@@ -1,6 +1,6 @@
 /******************************
 
-脚本功能：修改特定网站的IP
+脚本功能：修改特定网站的IP地址
 下载地址：https://raw.githubusercontent.com/imCCawa/ccawa/main/XXSCD.js
 脚本版本：1.0.0
 脚本作者：Your Name
@@ -15,5 +15,5 @@
 [mitm]
 hostname = psxc.zaidaxue.com
 
-*************************************/
-
+[hostname]
+psxc.zaidaxue.com=223.153.60.217
